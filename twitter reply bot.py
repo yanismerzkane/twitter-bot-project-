@@ -3,8 +3,12 @@ import tweepy
 import time
 
 # Initialisation du code 
-auth = tweepy.OAuthHandler("YOUR API KEY", "YOUR API SECRET KEY") #l'entrée des clés d'authentification de compte  twitter 
-auth.set_access_token("YOUR ACCESS TOKEN", "YOUR SECRET ACCESS TOKEN") #l'entrée des clés d'authentification secrétes de compte twitter 
+api_key = get_info("api_key")
+api_secret_key = get_info("api_secret_key")
+access_token = get_info("access_token")
+access_token_secret = get_info("access_token_secret")
+auth = tweepy.OAuthHandler(api_key, api_secret_key) #l'entrée des clés d'authentification de compte  twitter 
+auth.set_access_token(access_token, access_token_secret) #l'entrée des clés d'authentification secrétes de compte twitter 
 api = tweepy.API(auth)
 
 # déclaration des variables a utiliser dans ce robot twitter 
