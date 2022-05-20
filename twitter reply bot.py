@@ -1,35 +1,34 @@
-#Importing modules/libraries
+#importer les librairies 
 import tweepy
 import time
 
-# Initialization code
-auth = tweepy.OAuthHandler("YOUR API KEY", "YOUR API SECRET KEY")
-auth.set_access_token("YOUR ACCESS TOKEN", "YOUR SECRET ACCESS TOKEN")
+# Initialisation du code 
+auth = tweepy.OAuthHandler("YOUR API KEY", "YOUR API SECRET KEY") #l'entrée des clés d'authentification de compte  twitter 
+auth.set_access_token("YOUR ACCESS TOKEN", "YOUR SECRET ACCESS TOKEN") #l'entrée des clés d'authentification secrétes de compte twitter 
 api = tweepy.API(auth)
 
-# Some important variables which will be used later
-bot_id = int(api.me().id_str)
+# déclaration des variables a utiliser dans ce robot twitter 
+bot_id = int(api.me().id_str) #creation de l'identifiant du robot de twitter et le convertir en entier 
 mention_id = 1
 words = ["why", "how", "when", "what", "?"]
-message = "If you have any questions, feel free to send us a DM @{}"
+message = "si vous avez des questions , n'hesiter pas a les envoyer "
 
 # The actual bot
 while True:
-    mentions = api.mentions_timeline(since_id=mention_id) # Finding mention tweets
-    # Iterating through each mention tweet
+    mentions = api.mentions_timeline(since_id=mention_id) # trouver les tweets ( question) qu'on recherche
+    # iteration a chaque tweet trouvé (qu'on recherche)
     for mention in mentions:
-        print("Mention tweet found")
-        print(f"{mention.author.screen_name} - {mention.text}")
+        print("tweet trouvé")
+        print(f"{mention.author.screen_name} - {mention.text}") #imprimer le tweet trouvé
         mention_id = mention.id
-        # Checking if the mention tweet is not a reply, we are not the author, and
-        # that the mention tweet contains one of the words in our 'words' list
-        # so that we can determine if the tweet might be a question.
-        if mention.in_reply_to_status_id is None and mention.author.id != bot_id:
-            if True in [word in mention.text.lower() for word in words]:
-                try:
-                    print("Attempting to reply...")
+       
+      if mention.in_reply_to_status_id is None and mention.author.id != bot_id:    # Vérifier si le tweet trouvé n'est pas une réponse et nous ne sommes pas l'auteur
+            if True in [word in mention.text.lower() for word in words]:           # Vérifier que le tweet trouvé contient l'un des mots de notre liste de mots (words) afin que nous puissions déterminer si le tweet pourrait être une question.
+                try: 
+                    #maintenant c'est la réponse 
+                    print("Attempting to reply...") 
                     api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                     print("Successfully replied :)")
                 except Exception as exc:
-                    print(exc)
-    time.sleep(15) # The bot will only check for mentions every 15 seconds, unless you tweak this value
+                    print(exc) 
+    time.sleep(15) #Le bot ne vérifiera les tweet que toutes les 15 secondes, sauf si vous modifiez cette valeur
