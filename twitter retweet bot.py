@@ -1,11 +1,15 @@
-# Importing all modules/packages/libraries
+# Importer les librairies et les modules 
 import tweepy
 from textblob import TextBlob
 import time
-
+#on utilsie la librairie textblob pour traiter les données contextuelles et décider si un tweet est positif ou négatif
 # Initialization
-auth = tweepy.OAuthHandler("API KEY", "API SECRET KEY")
-auth.set_access_token("ACCESS TOKEN", "SECRET ACCESS TOKEN")
+api_key = get_info("api_key")
+api_secret_key = get_info("api_secret_key")
+access_token = get_info("access_token")
+access_token_secret = get_info("access_token_secret")
+auth = tweepy.OAuthHandler(api_key, api_secret_key)
+auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 # Getting Bot ID
