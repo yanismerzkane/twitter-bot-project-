@@ -3,7 +3,7 @@ import tweepy
 from textblob import TextBlob
 import time
 #on utilsie la librairie textblob pour traiter les données contextuelles et décider si un tweet est positif ou négatif
-# Initialization
+# Initialisation 
 api_key = get_info("api_key")
 api_secret_key = get_info("api_secret_key")
 access_token = get_info("access_token")
@@ -17,9 +17,9 @@ bot_id = int(api.me().id_str)
 
 mention_id = 1
 
-# Retweet Bot with Mentions
+# retwitter bot for mentions 
 while True:
-    mentions = api.mentions_timeline(since_id=mention_id)
+    mentions = api.mentions_timeline(since_id=mention_id) #permet de lister touts les tweets qui nous mentionnent 
     for mention in mentions:
         print("Mention Tweet found!")
         print(f"MENTION: {mention.author.screen_name} - {mention.text}")
