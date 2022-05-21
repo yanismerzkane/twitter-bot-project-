@@ -8,7 +8,8 @@ api_key = get_info("api_key")
 api_secret_key = get_info("api_secret_key")
 access_token = get_info("access_token")
 access_token_secret = get_info("access_token_secret")
-auth = tweepy.OAuthHandler(api_key, api_secret_key)
+#entreé des clés d'authentification 
+auth = tweepy.OAuthHandler(api_key, api_secret_key) 
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
