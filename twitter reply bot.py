@@ -7,8 +7,8 @@ api_key = get_info("api_key")
 api_secret_key = get_info("api_secret_key")
 access_token = get_info("access_token")
 access_token_secret = get_info("access_token_secret")
-auth = tweepy.OAuthHandler(api_key, api_secret_key) #l'entrée des clés d'authentification de compte  twitter 
-auth.set_access_token(access_token, access_token_secret) #l'entrée des clés d'authentification secrétes de compte twitter 
+auth = tweepy.OAuthHandler(api_key, api_secret_key) #l'entrée des clés d'authentification 
+auth.set_access_token(access_token, access_token_secret) #l'entrée des clés d'authentification secrétes  
 api = tweepy.API(auth)
 
 # déclaration des variables a utiliser dans ce robot twitter 
@@ -26,7 +26,7 @@ while True:
         print(f"{mention.author.screen_name} - {mention.text}") #imprimer le tweet trouvé qui nous mentionne
         mention_id = mention.id
        
-      if mention.in_reply_to_status_id is None and mention.author.id != bot_id:    # Vérifier si le tweet trouvé qui nous mentionne  n'est pas une réponse et nous ne sommes pas l'auteur de ce tweet (ce n'est pas le bot qui a envoyé le tweet
+      if mention.in_reply_to_status_id is None and mention.author.id != bot_id:    # Vérifier si le tweet trouvé qui nous mentionne  n'est pas une réponse a un autre tweet et nous ne sommes pas l'auteur de ce tweet (ce n'est pas le bot qui a envoyé le tweet)
             if True in [word in mention.text.lower() for word in words]:           # Vérifier que le tweet trouvé qui nous mentionne contient l'un des mots de notre liste de mots (words) afin que nous puissions déterminer si le tweet pourrait être une question.
                 try: 
                     #maintenant c'est la réponse au tweet qui nous mentionne
