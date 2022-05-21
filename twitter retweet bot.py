@@ -24,7 +24,7 @@ while True:
     for mention in mentions: #iteration a chaque tweet qui nous mentionne
         print("Mention Tweet found!") #tweet qui nous mentionne trouvé
         print(f"MENTION: {mention.author.screen_name} - {mention.text}")     #  imprimer le tweet qui nous mentionne
-        mention_id = mention.id  #cela impeche d'imprimer toujours le meme tweet mentionné
+        mention_id = mention.id  #cela empéche d'imprimer toujours le meme tweet mentionné
         mention_analysis = TextBlob(mention.text) #permet de tester si le tweet mentionné est positif ou négatif 
         mention_analysis_score = mention_analysis.sentiment.polarity  #permet de calculer approximativement le score (a quel point le tweet est positif ou négatif)
         print(f"Tweet has polarity score of {mention_analysis_score}") #permet d'imprimer le score dans lequel le tweet mentionné est positif ou négatif
