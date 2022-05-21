@@ -37,4 +37,5 @@ while True:
                     print(err)
             else: #si le tweet est négatif
                 print("Tweet will not be retweeted.\n")
-    time.sleep(15)  #permet 
+    time.sleep(15)  #Le bot ne vérifiera les tweets qui nous mentionne  toutes les 15 secondes, sauf si on modifie la valeur
+
