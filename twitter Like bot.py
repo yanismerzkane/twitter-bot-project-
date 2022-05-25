@@ -1,3 +1,4 @@
+#importer les librairies et les modules 
 import tweepy
 # Initialisation et authentification
 api_key = get_info("api_key")
