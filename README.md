@@ -1,3 +1,8 @@
+Nom : MERZKANE
+Prénom : Yanis Arezki 
+Matricule : 181831051219
+Section : GTR A
+
 twitter bot project
 
 twitter reply bot : Ce code permet de mettre en oeuvre  Un bot de réponse Twitter qui a été créé à l'aide de Tweepy. Ce bot recherchera les tweets qui mentionnent notre compte de bot. Notre bot répondra au tweet de mention s'il contiennent une question.
